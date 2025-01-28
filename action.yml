@@ -45,14 +45,13 @@ runs:
 
     - name: Build and push Docker image
       id: push
-      uses: docker/build-push-action@v5
+      uses: docker/bake-action@v6
       with:
-        context: .
+        source: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:cache
-        cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:cache,mode=max
+        # set: |
+        #   *.labels=${{ steps.meta.outputs.labels }}
+        #   *.tags=${{ steps.meta.outputs.tags }}
 
     - name: Generate artifact attestation
       uses: actions/attest-build-provenance@v2
