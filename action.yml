@@ -1,18 +1,18 @@
 name: Docker Build and Push
 
-description: Docker Compose Build and Push to registery.
+description: Docker Compose Build and Push to registry.
 
 inputs:
   registry:
-    description: Docker image registery.
+    description: Docker image registry.
     required: true
     default: ghcr.io
   registry_username:
-    description: Docker image registery username.
+    description: Docker image registry username.
     required: true
     default: ${{ github.actor }}
   registry_password:
-    description: Docker image registery password.
+    description: Docker image registry password.
     required: true
   project:
     description: Image name
