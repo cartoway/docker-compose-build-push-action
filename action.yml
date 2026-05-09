@@ -21,6 +21,9 @@ inputs:
   service:
     description: Service name
     required: false
+  compose_file:
+    description: Docker Compose definition files (new line separated)
+    required: false
 
 runs:
   using: "composite"
@@ -53,6 +56,7 @@ runs:
       id: push
       uses: docker/bake-action@v6
       with:
+        files: ${{ inputs.compose_file }}
         set: |
           *.tags=${{ steps.meta.outputs.tags }}
           *.cache-from=type=gha
